@@ -1,0 +1,16 @@
+.hero-section {
+  padding: 100px 0;
+  color: cornflowerblue;
+}
+
+.hero-section h2 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #1d5d9b;
+}
+
+.hero-section p {
+  font-size: 1.25rem;
+  margin-bottom: 30px;
+  color: #75c2f6;
+}
