@@ -22,6 +22,21 @@ const main = () => {
   };
 
   searchElement.clickEvent = onButtonSearchClicked;
+
+  const movieDetailButton = movieListElement.querySelector(".modal-detail-button");
+
+  movieDetailButton.addEventListener("click", async (event) => {
+    const movieId = event.target.getAttribute("data-dbid");
+
+    try {
+      const movieDetail = await DataSource.getMovieDetail(movieId);
+
+      movieModal.movie = movieDetail;
+      $("#movieDetailModal").modal("show");
+    } catch (error) {
+      console.error(error);
+    }
+  });
 };
 
 export default main;
