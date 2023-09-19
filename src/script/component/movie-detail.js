@@ -16,15 +16,23 @@ class MovieDetail extends HTMLElement {
       status,
     } = this._movie;
 
-    const statusText = status ? status : "Tidak tersedia";
+    const releaseDate = release_date ? release_date : "Tidak diketahui";
+    const statusText = status ? status : "Tidak diketahui";
     const genreList =
       Array.isArray(genres) && genres.length > 0
         ? genres.map((genre) => genre.name).join(", ")
-        : "Tidak tersedia";
+        : "Tidak diketahui";
     const companyList =
       Array.isArray(production_companies) && production_companies.length > 0
         ? production_companies.map((company) => company.name).join(", ")
-        : "Tidak tersedia";
+        : "Tidak diketahui";
+
+    const placeholderURL =
+      "https://via.placeholder.com/500x750.png?text=Image+Not+Found";
+
+    const posterUrl = poster_path
+      ? `https://tmdb.org/t/p/w500/${poster_path}`
+      : placeholderURL;
 
     this.innerHTML = `
         <div class="modal fade" id="movieDetailModal-${id}" tabindex="-1" aria-labelledby="movieDetailModalLabel-${id}" aria-hidden="true">
@@ -38,18 +46,18 @@ class MovieDetail extends HTMLElement {
                 <div class="container">
                   <div class="row">
                     <div class="col-md-3">
-                      <img src="https://tmdb.org/t/p/w500/${poster_path}" class="img-fluid" width="200px" alt="${title}">
+                      <img src="${posterUrl}" class="img-fluid" width="200px" alt="${title}">
                     </div>
                     <div class="col-md-9">
                       <ul class="list-group">
                         <li class="list-group-item">
-                          <h4>${title} (${release_date})</h4>
+                          <h4>${title} (${releaseDate})</h4>
                         </li>
-                        <li class="list-group-item"><strong>Release : </strong>${release_date}</li>
-                        <li class="list-group-item"><strong>Description : </strong>${overview}</li>
                         <li class="list-group-item"><strong>Status : </strong>${statusText}</li>
+                        <li class="list-group-item"><strong>Release Date : </strong>${releaseDate}</li>
                         <li class="list-group-item"><strong>Genres : </strong>${genreList}</li>
                         <li class="list-group-item"><strong>Production : </strong>${companyList}</li>
+                        <li class="list-group-item"><strong>Description : </strong>${overview}</li>
                       </ul>
                     </div>
                   </div>
