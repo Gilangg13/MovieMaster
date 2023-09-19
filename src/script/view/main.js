@@ -26,6 +26,7 @@ const main = () => {
 
   searchElement.clickEvent = onButtonSearchClicked;
 
+<<<<<<< HEAD
   document.addEventListener("showDetail", async (event) => {
     const movieId = event.detail.movieId;
 
@@ -37,6 +38,18 @@ const main = () => {
 
       console.log(movieId);
       console.log(movieDetail);
+=======
+  const movieDetailButton = movieListElement.querySelector(".modal-detail-button");
+
+  movieDetailButton.addEventListener("click", async (event) => {
+    const movieId = event.target.getAttribute("data-dbid");
+
+    try {
+      const movieDetail = await DataSource.getMovieDetail(movieId);
+
+      movieModal.movie = movieDetail;
+      $("#movieDetailModal").modal("show");
+>>>>>>> 8c936a3820c3b0b3d9167343c2b11cccbd50cf97
     } catch (error) {
       console.error(error);
     }
