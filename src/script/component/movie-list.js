@@ -10,22 +10,17 @@ class MovieList extends HTMLElement {
     this._eventDetail = event;
   }
 
-  setresultError(message) {
+  setResultError(message) {
     this._message = message;
     this.innerHTML = `
         <style>
-            .img-search-not-found {
+            .search-not-found {
                 text-align: center;
                 margin-bottom: 10px;
             }
-            .img-search-not-found img {
-                width: 360px;
-                height: 360px;
-            }
         </style>
 
-        <div class="img-search-not-found">
-            <img src="" alt="">
+        <div class="search-not-found">
             <h3>${message}</h3>
         </div>
     `;

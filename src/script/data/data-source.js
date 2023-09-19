@@ -19,9 +19,7 @@ class DataSource {
     const apiKey = "a7a776a2080c86401df6ef0c6d2458ea";
     const baseUrl = "https://api.themoviedb.org/3";
 
-    return fetch(
-      `${baseUrl}/movie/${movieId}?api_key=${apiKey}&language=en-US&append_to_response=videos`
-    )
+    return fetch(`${baseUrl}/movie/${movieId}?api_key=${apiKey}&language=en-US`)
       .then((response) => {
         return response.json();
       })
